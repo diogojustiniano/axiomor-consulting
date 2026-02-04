@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Revenue operations, data analytics, and marketing strategies for Series A & B SaaS companies. Insights and resources from RODA Consulting.">
+    <title>Blog & Insights | RODA Consulting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding-top: 80px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0a0a0a;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        
+        /* Dropdown Navigation */
+        .nav-item {
+            position: relative;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            margin-top: 10px;
+            padding: 24px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-section {
+            padding: 0 24px;
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .dropdown-section:last-child {
+            border-right: none;
+        }
+        
+        .dropdown-header {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3b82f6;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-header:hover {
+            color: #3b82f6;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 8px 0;
+            color: #6a6a6a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            color: #3b82f6;
+            padding-left: 8px;
+        }
+        
+        /* Packages Dropdown - Single Column */
+        .packages-dropdown {
+            min-width: 280px;
+            grid-template-columns: 1fr;
+        }
+        
+        .packages-dropdown .dropdown-section {
+            border-right: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
+            color: white;
+            padding: 160px 40px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Category Filters */
+        .category-filters {
+            background: #fafafa;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .filter-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        
+        .filter-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            padding: 120px 40px;
+            text-align: center;
+            background: white;
+        }
+        
+        .empty-icon {
+            font-size: 80px;
+            margin-bottom: 32px;
+        }
+        
+        .empty-state h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+        
+        .empty-state p {
+            font-size: 18px;
+            color: #6a6a6a;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .empty-cta {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .empty-cta:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Blog Grid (hidden by default) */
+        .blog-grid {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+            border-color: #3b82f6;
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .blog-content {
+            padding: 24px;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            font-size: 14px;
+            color: #6a6a6a;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .blog-read-time {
+            font-size: 13px;
+            color: #9a9a9a;
+        }
+        
+        .blog-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .blog-link:hover {
+            color: #2563eb;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dropdown {
+                min-width: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .nav-container {
+                padding: 16px 20px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 24px;
+                font-size: 14px;
+            }
+            
+            .dropdown {
+                min-width: 90vw;
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                padding-bottom: 16px;
+                margin-bottom: 16px;
+            }
+            
+            .dropdown-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .category-filters {
+                padding: 24px 20px;
+            }
+            
+            .filter-buttons {
+                gap: 12px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .empty-state {
+                padding: 80px 20px;
+            }
+            
+            .empty-icon {
+                font-size: 60px;
+            }
+            
+            .empty-state h3 {
+                font-size: 24px;
+            }
+            
+            .empty-state p {
+                font-size: 16px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">RODA</a>
+            <ul class="nav-links">
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li class="nav-item">
+                    <a href="index.html#services">Services</a>
+                    <div class="dropdown">
+                        <div class="dropdown-section">
+                            <a href="revenue-operations.html" class="dropdown-header">Revenue Operations</a>
+                            <a href="revenue-operations.html#crm-optimization" class="dropdown-item">CRM Optimization</a>
+                            <a href="revenue-operations.html#revops-foundation" class="dropdown-item">RevOps Foundation Setup</a>
+                            <a href="revenue-operations.html#tool-implementation" class="dropdown-item">Sales & RevOps Tool Implementation</a>
+                            <a href="revenue-operations.html#sales-automation" class="dropdown-item">Sales Process Automation</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="data-analytics.html" class="dropdown-header">Data Analytics</a>
+                            <a href="data-analytics.html#analytics-audit" class="dropdown-item">Data Analytics Audit</a>
+                            <a href="data-analytics.html#dashboard-development" class="dropdown-item">Custom Dashboard Development</a>
+                            <a href="data-analytics.html#sql-optimization" class="dropdown-item">SQL Database Optimization</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="marketing-operations.html" class="dropdown-header">Marketing Operations</a>
+                            <a href="marketing-operations.html#marketing-ops-setup" class="dropdown-item">Marketing Operations Setup</a>
+                            <a href="marketing-operations.html#gtm-strategy" class="dropdown-item">Go-to-Market Strategy</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#packages">Packages</a>
+                    <div class="dropdown packages-dropdown">
+                        <div class="dropdown-section">
+                            <a href="index.html#packages" class="dropdown-item">Start Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Scale Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Sales Engagement Stack</a>
+                            <a href="index.html#packages" class="dropdown-item">Lead Gen & Enrichment</a>
+                            <a href="index.html#packages" class="dropdown-item">Full Revenue Stack</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Insights & Resources</h1>
+            <p>Revenue operations, data analytics, and marketing strategies for Series A & B SaaS companies.</p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="category-filters">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="revenue-operations">Revenue Operations</button>
+            <button class="filter-btn" data-category="data-analytics">Data Analytics</button>
+            <button class="filter-btn" data-category="marketing-operations">Marketing Operations</button>
+            <button class="filter-btn" data-category="go-to-market">Go-to-Market</button>
+        </div>
+    </section>
+
+    <!-- Empty State -->
+    <section class="empty-state" id="emptyState">
+        <div class="empty-icon">📝</div>
+        <h3>Content Coming Soon</h3>
+        <p>We're preparing valuable insights on revenue operations, data analytics, and growth strategies for Series A & B companies.</p>
+        <a href="index.html#contact" class="empty-cta">Get Notified When We Publish</a>
+    </section>
+
+    <!-- Blog Grid (hidden by default) -->
+    <section class="blog-grid" id="blogGrid">
+        <!-- Blog cards will be dynamically added here -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 RODA Consulting. Revenue Operations & Data Analytics Excellence.</p>
+    </footer>
+
+    <!-- JavaScript for category filtering -->
+    <script>
+        // Category filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const blogGrid = document.getElementById('blogGrid');
+        const emptyState = document.getElementById('emptyState');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get selected category
+                const category = button.getAttribute('data-category');
+                
+                // Filter logic would go here when blog posts exist
+                // For now, always show empty state since no posts exist
+                emptyState.style.display = 'block';
+                blogGrid.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

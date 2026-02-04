@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Expert data analytics and revenue operations consulting for Series A and Series B SaaS companies. Transform data into revenue with RODA Consulting.">
     <title>RODA Consulting | Revenue Operations & Data Analytics Excellence</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
         * {
             margin: 0;
@@ -18,11 +19,13 @@
             line-height: 1.6;
             color: #1a1a1a;
             background: #ffffff;
+            padding-top: 80px;
         }
         
         /* Navigation */
         nav {
             position: fixed;
+            top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
@@ -44,12 +47,14 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #0a0a0a;
+            text-decoration: none;
         }
         
         .nav-links {
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
@@ -62,6 +67,83 @@
         
         .nav-links a:hover {
             color: #3b82f6;
+        }
+        
+        /* Dropdown Navigation */
+        .nav-item {
+            position: relative;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            margin-top: 10px;
+            padding: 24px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-section {
+            padding: 0 24px;
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .dropdown-section:last-child {
+            border-right: none;
+        }
+        
+        .dropdown-header {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3b82f6;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-header:hover {
+            color: #3b82f6;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 8px 0;
+            color: #6a6a6a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            color: #3b82f6;
+            padding-left: 8px;
+        }
+        
+        /* Packages Dropdown - Single Column */
+        .packages-dropdown {
+            min-width: 280px;
+            grid-template-columns: 1fr;
+        }
+        
+        .packages-dropdown .dropdown-section {
+            border-right: none;
         }
         
         /* Hero Section */
@@ -96,23 +178,16 @@
         .hero h1 {
             font-size: 72px;
             font-weight: 800;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             letter-spacing: -2px;
             line-height: 1.1;
         }
         
-        .hero .subtitle {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-        
         .hero p {
-            font-size: 18px;
-            margin-bottom: 48px;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
+            font-size: 20px;
+            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
@@ -122,7 +197,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 40px;
+            margin-top: 48px;
         }
         
         .cta-primary {
@@ -166,25 +241,17 @@
         /* Trust Bar */
         .trust-bar {
             background: #fafafa;
-            padding: 40px 40px;
-            text-align: center;
+            padding: 48px 40px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
         
-        .trust-bar p {
-            color: #6a6a6a;
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-        
         .trust-stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
         }
         
         .stat {
@@ -192,8 +259,8 @@
         }
         
         .stat-number {
-            font-size: 48px;
-            font-weight: 600;
+            font-size: 36px;
+            font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 8px;
         }
@@ -204,14 +271,16 @@
             font-weight: 500;
         }
         
+        .stat-text {
+            font-size: 15px;
+            color: #4a4a4a;
+            font-weight: 600;
+        }
+        
         /* Section Styling */
         .section {
             padding: 120px 40px;
-        }
-        
-        .section-dark {
-            background: #0a0a0a;
-            color: white;
+            contain: layout style paint;
         }
         
         .section-light {
@@ -220,6 +289,25 @@
         
         .section-white {
             background: white;
+        }
+        
+        .section-dark {
+            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.04) 0%, transparent 50%);
         }
         
         .section-header {
@@ -231,32 +319,37 @@
         .section-title {
             font-size: 48px;
             font-weight: 800;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             letter-spacing: -1px;
+            color: #0a0a0a;
+        }
+        
+        .section-dark .section-title {
+            color: white;
         }
         
         .section-description {
-            font-size: 20px;
+            font-size: 18px;
             color: #6a6a6a;
             line-height: 1.7;
         }
         
         .section-dark .section-description {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
         }
         
-        /* Expertise Cards */
+        /* Expertise Grid */
         .expertise-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
         
         .expertise-card {
             background: white;
-            padding: 48px 40px;
+            padding: 40px 32px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.06);
             transition: all 0.3s;
@@ -264,666 +357,472 @@
         
         .expertise-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
             border-color: #3b82f6;
         }
         
         .expertise-icon {
             font-size: 48px;
-            margin-bottom: 24px;
             display: block;
+            margin-bottom: 24px;
         }
         
         .expertise-card h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 16px;
             color: #0a0a0a;
         }
         
         .expertise-card p {
+            font-size: 14px;
             color: #6a6a6a;
             line-height: 1.7;
             margin-bottom: 24px;
-            font-size: 15px;
         }
         
         .expertise-list {
             list-style: none;
             padding: 0;
-            margin-bottom: 24px;
         }
         
         .expertise-list li {
-            padding: 8px 0;
+            font-size: 13px;
             color: #4a4a4a;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         }
         
-        .expertise-list li:before {
-            content: "→";
-            margin-right: 12px;
-            font-weight: 600;
-            color: #3b82f6;
+        .expertise-list li:last-child {
+            border-bottom: none;
         }
-
-        /* Tool Logos Section */
+        
         .tool-logos {
             margin-top: 24px;
             padding-top: 24px;
             border-top: 1px solid rgba(0, 0, 0, 0.06);
         }
-
+        
         .tool-logos-label {
             font-size: 11px;
+            font-weight: 700;
             color: #9a9a9a;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .tool-logos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        .tool-logo-item {
-            background: #fafafa;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #4a4a4a;
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.2s;
-        }
-
-        .tool-logo-item:hover {
-            background: white;
-            border-color: #3b82f6;
-            color: #3b82f6;
+            margin-bottom: 12px;
         }
         
-        /* Service Cards */
-        .services-grid {
-            max-width: 1400px;
+        .tool-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .tool-logo-item {
+            font-size: 12px;
+            padding: 8px 12px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            color: #4a4a4a;
+        }
+        
+        /* Service Areas Grid */
+        .service-areas-grid {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
         
-        .service-card {
+        .service-area-card {
             background: white;
-            padding: 40px;
+            padding: 48px 40px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.06);
             transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
+            text-align: center;
         }
         
-        .service-card:hover {
+        .service-area-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
             border-color: #3b82f6;
         }
         
-        .service-tag {
-            display: inline-block;
-            padding: 6px 12px;
-            background: #3b82f6;
-            color: white;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            width: fit-content;
+        .service-area-card .expertise-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
         }
         
-        .service-card h4 {
+        .service-area-card h3 {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 16px;
             color: #0a0a0a;
         }
         
-        .service-description {
+        .service-area-card p {
+            font-size: 15px;
             color: #6a6a6a;
             line-height: 1.7;
-            margin-bottom: 24px;
-            flex-grow: 1;
+            margin-bottom: 32px;
+        }
+        
+        .service-area-link {
+            display: inline-block;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 15px;
+            transition: all 0.2s;
         }
         
-        .deliverables {
-            margin-bottom: 24px;
+        .service-area-link:hover {
+            transform: translateX(4px);
         }
         
-        .deliverables h5 {
-            font-size: 11px;
-            font-weight: 700;
-            color: #9a9a9a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-        
-        .deliverables ul {
-            list-style: none;
-            padding: 0;
+        /* Featured Packages Grid */
+        .featured-packages-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .deliverables li {
-            font-size: 13px;
-            color: #4a4a4a;
-            display: flex;
-            align-items: center;
-        }
-        
-        .deliverables li:before {
-            content: "→";
-            margin-right: 8px;
-            font-weight: 600;
-            color: #3b82f6;
-        }
-        
-        .service-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 24px;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        
-        .price-section {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        
-        .price {
-            font-size: 36px;
-            font-weight: 800;
-            color: #0a0a0a;
-        }
-        
-        .price-note {
-            font-size: 13px;
-            color: #6a6a6a;
-        }
-        
-        .timeline {
-            text-align: right;
-        }
-        
-        .timeline-label {
-            font-size: 11px;
-            color: #9a9a9a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        
-        .timeline-value {
-            font-size: 16px;
-            font-weight: 600;
-            color: #4a4a4a;
-        }
-        
-        .retainer-option {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(59, 130, 246, 0.08) 100%);
-            padding: 20px 24px;
-            border-radius: 8px;
-            margin-top: 24px;
-            border: 1px solid rgba(59, 130, 246, 0.15);
-        }
-        
-        .retainer-option h5 {
-            font-size: 11px;
-            font-weight: 700;
-            color: #3b82f6;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .retainer-option p {
-            font-size: 14px;
-            color: #4a4a4a;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-        
-        .retainer-pricing {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .retainer-price {
-            font-size: 24px;
-            font-weight: 700;
-            color: #0a0a0a;
-        }
-        
-        .retainer-commitment {
-            font-size: 13px;
-            color: #6a6a6a;
-            font-weight: 500;
-        }
-
-        /* Package Cards */
-        .packages-grid {
-            max-width: 1400px;
-            margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
-
+        
         .package-card {
             background: white;
-            padding: 40px;
+            padding: 48px 40px;
             border-radius: 12px;
-            border: 2px solid #3b82f6;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
             position: relative;
         }
-
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+            border-color: #3b82f6;
+        }
+        
         .package-badge {
             position: absolute;
-            top: -12px;
+            top: 24px;
             right: 24px;
-            background: #3b82f6;
+            background: #10b981;
             color: white;
-            padding: 6px 16px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
+        
         .package-name {
-            font-size: 20px;
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 16px;
             color: #0a0a0a;
-            margin-bottom: 12px;
         }
-
+        
         .package-price {
             font-size: 48px;
             font-weight: 800;
             color: #3b82f6;
             margin-bottom: 8px;
         }
-
+        
         .package-savings {
-            font-size: 14px;
-            color: #6a6a6a;
-            font-weight: 500;
-            margin-bottom: 24px;
+            font-size: 16px;
+            color: #9a9a9a;
+            text-decoration: line-through;
+            margin-bottom: 32px;
         }
-
+        
         .package-includes {
             list-style: none;
             padding: 0;
             margin-bottom: 24px;
         }
-
+        
         .package-includes li {
-            padding: 8px 0;
-            font-size: 14px;
+            font-size: 15px;
             color: #4a4a4a;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             display: flex;
             align-items: center;
         }
-
+        
         .package-includes li:before {
-            content: "→";
-            color: #3b82f6;
-            font-weight: bold;
+            content: "✓";
+            color: #10b981;
+            font-weight: 700;
             margin-right: 12px;
+            font-size: 18px;
         }
         
-        /* Process Section */
+        .package-includes li:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-value {
+            font-size: 14px;
+            color: #6a6a6a;
+            font-weight: 600;
+        }
+        
+        /* Process Steps */
         .process-steps {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
         }
         
         .process-step {
             text-align: center;
-            position: relative;
-        }
-        
-        .process-step::after {
-            content: '→';
-            position: absolute;
-            right: -20px;
-            top: 40px;
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .process-step:last-child::after {
-            display: none;
         }
         
         .step-number {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
             border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            font-size: 32px;
+            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            font-weight: 800;
             margin: 0 auto 24px;
         }
         
         .process-step h3 {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: white;
         }
         
         .process-step p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
             font-size: 15px;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: white;
-            padding: 100px 40px;
-            text-align: center;
-        }
-        
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .cta-section h2 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-            color: #0a0a0a;
-        }
-        
-        .cta-section p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: #6a6a6a;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.7;
         }
         
-        .cta-button {
+        /* Blog Preview */
+        .blog-preview {
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .blog-preview h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0a0a0a;
+        }
+        
+        .blog-preview p {
+            font-size: 16px;
+            color: #6a6a6a;
+            margin-bottom: 32px;
+        }
+        
+        .blog-button {
             display: inline-block;
-            padding: 20px 56px;
+            padding: 14px 32px;
             background: #3b82f6;
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s;
         }
         
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+        .blog-button:hover {
             background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
         }
         
         /* Contact Section */
         .contact {
             background: #fafafa;
             padding: 100px 40px;
+            text-align: center;
         }
         
         .contact-container {
-            max-width: 1200px;
+            max-width: 700px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
         }
         
-        .contact-info h3 {
-            font-size: 32px;
-            font-weight: 700;
+        .contact h2 {
+            font-size: 42px;
+            font-weight: 800;
             margin-bottom: 16px;
             color: #0a0a0a;
+            letter-spacing: -1px;
         }
         
-        .contact-info p {
+        .contact p {
+            font-size: 18px;
             color: #6a6a6a;
             margin-bottom: 32px;
             line-height: 1.7;
-            font-size: 16px;
         }
         
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-        
-        .contact-item-content h4 {
-            font-size: 11px;
-            font-weight: 600;
-            color: #9a9a9a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        
-        .contact-item-content p {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0a0a0a;
-            margin: 0;
-        }
-        
-        .contact-item-content a {
-            color: #0a0a0a;
+        .contact-email {
+            display: block;
+            font-size: 28px;
+            color: #3b82f6;
             text-decoration: none;
+            font-weight: 700;
+            margin-bottom: 32px;
             transition: color 0.3s;
         }
         
-        .contact-item-content a:hover {
-            color: #3b82f6;
+        .contact-email:hover {
+            color: #2563eb;
         }
         
-        .contact-form {
-            background: white;
-            padding: 48px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            color: #4a4a4a;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            font-size: 15px;
-            font-family: 'Inter', sans-serif;
-            background: white;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-button {
-            width: 100%;
-            padding: 18px;
+        .contact-button {
+            display: inline-block;
+            padding: 18px 48px;
             background: #3b82f6;
             color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 15px;
+            text-decoration: none;
+            border-radius: 8px;
             font-weight: 600;
-            cursor: pointer;
+            font-size: 16px;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
-        .submit-button:hover {
+        .contact-button:hover {
             background: #2563eb;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2);
         }
         
         /* Footer */
         footer {
             background: #0a0a0a;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
             text-align: center;
-            padding: 60px 40px;
         }
         
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        footer p {
             font-size: 14px;
         }
         
         /* Responsive */
-        @media (max-width: 1200px) {
-            .expertise-grid,
+        @media (max-width: 1024px) {
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .process-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .services-grid,
-            .packages-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .dropdown {
+                min-width: 600px;
             }
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
+            body {
+                padding-top: 70px;
             }
             
-            .hero .subtitle {
-                font-size: 20px;
+            .nav-container {
+                padding: 16px 20px;
             }
             
-            .trust-stats,
-            .expertise-grid,
-            .services-grid,
-            .packages-grid,
-            .process-steps,
-            .contact-container {
+            .logo {
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 24px;
+                font-size: 14px;
+            }
+            
+            .dropdown {
+                min-width: 90vw;
                 grid-template-columns: 1fr;
+            }
+            
+            .dropdown-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                padding-bottom: 16px;
+                margin-bottom: 16px;
+            }
+            
+            .dropdown-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            
+            .hero {
+                padding: 120px 20px 80px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 16px;
             }
             
             .cta-buttons {
                 flex-direction: column;
+                gap: 16px;
+            }
+            
+            .cta-primary, .cta-secondary {
+                width: 100%;
+            }
+            
+            .trust-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+            
+            .section {
+                padding: 60px 20px;
             }
             
             .section-title {
                 font-size: 36px;
             }
-
-            .tool-logos-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-areas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -932,11 +831,46 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">RODA</div>
+            <a href="index.html" class="logo">RODA</a>
             <ul class="nav-links">
                 <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#services">Services</a></li>
+                <li class="nav-item">
+                    <a href="#services">Services</a>
+                    <div class="dropdown">
+                        <div class="dropdown-section">
+                            <a href="revenue-operations.html" class="dropdown-header">Revenue Operations</a>
+                            <a href="revenue-operations.html#crm-optimization" class="dropdown-item">CRM Optimization</a>
+                            <a href="revenue-operations.html#revops-foundation" class="dropdown-item">RevOps Foundation Setup</a>
+                            <a href="revenue-operations.html#tool-implementation" class="dropdown-item">Sales & RevOps Tool Implementation</a>
+                            <a href="revenue-operations.html#sales-automation" class="dropdown-item">Sales Process Automation</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="data-analytics.html" class="dropdown-header">Data Analytics</a>
+                            <a href="data-analytics.html#analytics-audit" class="dropdown-item">Data Analytics Audit</a>
+                            <a href="data-analytics.html#dashboard-development" class="dropdown-item">Custom Dashboard Development</a>
+                            <a href="data-analytics.html#sql-optimization" class="dropdown-item">SQL Database Optimization</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="marketing-operations.html" class="dropdown-header">Marketing Operations</a>
+                            <a href="marketing-operations.html#marketing-ops-setup" class="dropdown-item">Marketing Operations Setup</a>
+                            <a href="marketing-operations.html#gtm-strategy" class="dropdown-item">Go-to-Market Strategy</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#packages">Packages</a>
+                    <div class="dropdown packages-dropdown">
+                        <div class="dropdown-section">
+                            <a href="index.html#packages" class="dropdown-item">Start Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Scale Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Sales Engagement Stack</a>
+                            <a href="index.html#packages" class="dropdown-item">Lead Gen & Enrichment</a>
+                            <a href="index.html#packages" class="dropdown-item">Full Revenue Stack</a>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#process">Process</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -946,7 +880,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Transform Data Into Revenue</h1>
-            <p class="subtitle">Expert data analytics and revenue operations consulting for Series A and Series B companies.</p>
+            <p>Expert data analytics and revenue operations consulting for Series A and Series B companies.</p>
             <p>Build the foundation to scale from $2M to $50M ARR with clean data, optimized processes, and revenue intelligence.</p>
             <div class="cta-buttons">
                 <a href="#contact" class="cta-primary">Schedule Free Consultation</a>
@@ -957,8 +891,10 @@
 
     <!-- Trust Bar -->
     <section class="trust-bar">
-        <p>Trusted by Growth-Stage Companies</p>
         <div class="trust-stats">
+            <div class="stat">
+                <div class="stat-text">Trusted by Growth-Stage Companies</div>
+            </div>
             <div class="stat">
                 <div class="stat-number">€55M+</div>
                 <div class="stat-label">Revenue Managed</div>
@@ -968,8 +904,7 @@
                 <div class="stat-label">Combined Experience</div>
             </div>
             <div class="stat">
-                <div class="stat-number">Global</div>
-                <div class="stat-label">US, EMEA, LATAM</div>
+                <div class="stat-text">Global: US, EMEA, LATAM</div>
             </div>
         </div>
     </section>
@@ -1043,426 +978,45 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Service Areas Section -->
     <section class="section section-white" id="services">
         <div class="section-header">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-description">Fixed-price projects with clear deliverables and timelines. Every service includes an optional retainer for ongoing support.</p>
+            <p class="section-description">Explore our specialized service areas designed for Series A and B SaaS companies.</p>
         </div>
         
-        <div class="services-grid">
-            <!-- Service 1 -->
-            <div class="service-card">
-                <span class="service-tag">Foundation</span>
-                <h4>Data Analytics Audit</h4>
-                <p class="service-description">Comprehensive assessment of your data infrastructure, quality, and reporting capabilities. Get a clear roadmap to improve analytics maturity.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Current state assessment</li>
-                        <li>Data quality analysis</li>
-                        <li>Gap identification</li>
-                        <li>6-month roadmap</li>
-                        <li>Dashboard mockups</li>
-                        <li>Executive presentation</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$3,500</div>
-                        <div class="price-note">One-time project</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">2 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Monthly Support</h5>
-                    <p>Ongoing analytics support: reporting, dashboard maintenance, ad-hoc analysis (20 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$2,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
+        <div class="service-areas-grid">
+            <div class="service-area-card">
+                <span class="expertise-icon">🎯</span>
+                <h3>Revenue Operations</h3>
+                <p>CRM optimization, RevOps foundations, sales automation, and tool implementation.</p>
+                <a href="revenue-operations.html" class="service-area-link">Explore Services →</a>
             </div>
 
-            <!-- Service 2 -->
-            <div class="service-card">
-                <span class="service-tag">High Impact</span>
-                <h4>CRM Optimization</h4>
-                <p class="service-description">Transform your Salesforce or HubSpot into a revenue-driving engine. Clean data, smart workflows, and high adoption.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Data cleanup</li>
-                        <li>5-10 automated workflows</li>
-                        <li>Streamlined sales process</li>
-                        <li>Custom dashboards</li>
-                        <li>2-3 integrations</li>
-                        <li>Team training</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$5K-$8.5K</div>
-                        <div class="price-note">Varies by complexity</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">3-4 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional CRM Administration</h5>
-                    <p>Ongoing CRM management: updates, data hygiene, user support, optimization (25 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$3,000/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
+            <div class="service-area-card">
+                <span class="expertise-icon">📊</span>
+                <h3>Data Analytics</h3>
+                <p>Analytics audits, custom dashboards, and SQL database optimization.</p>
+                <a href="data-analytics.html" class="service-area-link">Explore Services →</a>
             </div>
 
-            <!-- Service 3 -->
-            <div class="service-card">
-                <span class="service-tag">Analytics</span>
-                <h4>Custom Dashboard Development</h4>
-                <p class="service-description">Beautiful, interactive Power BI or Tableau dashboards that turn data into decisions. Automated refresh, mobile-ready.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>5 pages/views</li>
-                        <li>15-20 key metrics</li>
-                        <li>2-3 data sources</li>
-                        <li>Automated refresh</li>
-                        <li>Mobile optimization</li>
-                        <li>Training & documentation</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$3K-$6K</div>
-                        <div class="price-note">Varies by data sources</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">2-3 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Dashboard Maintenance</h5>
-                    <p>Keep dashboards current: updates, new metrics, optimization, monitoring (10 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$1,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="service-card">
-                <span class="service-tag">Strategic</span>
-                <h4>RevOps Foundation Setup</h4>
-                <p class="service-description">Build a revenue operations foundation that scales. Process, metrics, forecasting, and meeting cadences that align your teams.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Revenue engine diagnostic</li>
-                        <li>Sales process playbook</li>
-                        <li>Forecasting framework</li>
-                        <li>Metrics & dashboards</li>
-                        <li>Meeting cadence templates</li>
-                        <li>Team training</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$6,500</div>
-                        <div class="price-note">One-time project</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">4 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional RevOps Support</h5>
-                    <p>Ongoing RevOps management: pipeline reviews, process optimization, reporting (30 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$4,000/mo</div>
-                        <div class="retainer-commitment">6-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="service-card">
-                <span class="service-tag">Strategic</span>
-                <h4>Market & Competitive Analysis</h4>
-                <p class="service-description">TAM/SAM/SOM sizing, competitive intelligence, and ICP development for board presentations and strategic planning.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>TAM/SAM/SOM analysis</li>
-                        <li>Competitive landscape</li>
-                        <li>Market trends report</li>
-                        <li>ICP & buyer personas</li>
-                        <li>Strategic recommendations</li>
-                        <li>Executive presentation</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$5,500</div>
-                        <div class="price-note">One-time project</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">3 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Market Intelligence</h5>
-                    <p>Ongoing competitive monitoring and quarterly trend reports (15 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$2,000/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 6 - Tool Implementation -->
-            <div class="service-card">
-                <span class="service-tag">New Service</span>
-                <h4>Sales & RevOps Tool Implementation</h4>
-                <p class="service-description">Expert setup of your revenue tech stack. From Salesloft to Jiminny to ZoomInfo—properly configured, integrated, and adopted.</p>
-                <div class="deliverables">
-                    <h5>Tools We Implement</h5>
-                    <ul>
-                        <li>Salesloft / Outreach</li>
-                        <li>Jiminny / Gong</li>
-                        <li>ZoomInfo / Lusha</li>
-                        <li>ActiveCampaign</li>
-                        <li>Calendly / Chili Piper</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$1.5K-$3.5K</div>
-                        <div class="price-note">Per tool</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">1-3 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Tools Administration</h5>
-                    <p>Ongoing management of your revenue tech stack (20 hours/month flexible across all tools)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$2,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 7 -->
-            <div class="service-card">
-                <span class="service-tag">Technical</span>
-                <h4>SQL Database Optimization</h4>
-                <p class="service-description">Improve query speed. Optimize slow queries, design indexes, and enable real-time reporting.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Database health assessment</li>
-                        <li>10 optimized queries</li>
-                        <li>Index optimization</li>
-                        <li>Performance benchmarks</li>
-                        <li>Query library & best practices</li>
-                        <li>Knowledge transfer</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$3,500</div>
-                        <div class="price-note">One-time project</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">2 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Database Administration</h5>
-                    <p>Ongoing database support: query development, monitoring, maintenance (20 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$2,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 8 -->
-            <div class="service-card">
-                <span class="service-tag">Efficiency</span>
-                <h4>Sales Process Automation</h4>
-                <p class="service-description">Save 5-10 hours per rep per week. Automate lead routing, follow-ups, data entry, and reporting.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>10-12 automated workflows</li>
-                        <li>Email sequences</li>
-                        <li>Task automation</li>
-                        <li>Integration setup</li>
-                        <li>ROI tracking dashboard</li>
-                        <li>Team training</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$4.5K-$7K</div>
-                        <div class="price-note">Varies by complexity</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">3-4 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Automation Expansion</h5>
-                    <p>Continuous automation optimization and new workflow development (20 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$2,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 9 -->
-            <div class="service-card">
-                <span class="service-tag">Board-Level</span>
-                <h4>Go-to-Market Strategy</h4>
-                <p class="service-description">Comprehensive GTM playbook for new products, markets, or strategic pivots. Customer research, sales/marketing alignment, success metrics.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Market opportunity assessment</li>
-                        <li>Customer interviews (5-10)</li>
-                        <li>Sales & marketing alignment</li>
-                        <li>Channel strategy</li>
-                        <li>90-day action plan</li>
-                        <li>Executive workshop</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$8.5K-$15K</div>
-                        <div class="price-note">Varies by scope</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">4-6 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional GTM Execution Support</h5>
-                    <p>Hands-on implementation support for your GTM strategy (35 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$5,000/mo</div>
-                        <div class="retainer-commitment">6-month minimum</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 10 - Marketing Operations -->
-            <div class="service-card">
-                <span class="service-tag">MarketingOps</span>
-                <h4>Marketing Operations Setup</h4>
-                <p class="service-description">Complete marketing operations infrastructure. Build scalable campaigns, automation, and analytics for demand generation and growth.</p>
-                <div class="deliverables">
-                    <h5>Key Deliverables</h5>
-                    <ul>
-                        <li>Marketing automation setup</li>
-                        <li>Campaign performance dashboards</li>
-                        <li>Lead scoring & attribution</li>
-                        <li>Database management & hygiene</li>
-                        <li>Workflow & process design</li>
-                        <li>Team training & documentation</li>
-                    </ul>
-                </div>
-                <div class="service-footer">
-                    <div class="price-section">
-                        <div class="price">$6K-$10K</div>
-                        <div class="price-note">Varies by complexity</div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-label">Timeline</div>
-                        <div class="timeline-value">4-5 weeks</div>
-                    </div>
-                </div>
-                <div class="retainer-option">
-                    <h5>Optional Marketing Ops Administration</h5>
-                    <p>Ongoing campaign operations, reporting, and system management (30 hours/month)</p>
-                    <div class="retainer-pricing">
-                        <div class="retainer-price">$3,500/mo</div>
-                        <div class="retainer-commitment">3-month minimum</div>
-                    </div>
-                </div>
+            <div class="service-area-card">
+                <span class="expertise-icon">📢</span>
+                <h3>Marketing Operations</h3>
+                <p>Marketing automation, campaign analytics, lead scoring, and go-to-market strategy.</p>
+                <a href="marketing-operations.html" class="service-area-link">Explore Services →</a>
             </div>
         </div>
+    </section>
 
-        <!-- Package Deals -->
-        <div class="section-header" style="margin-top: 100px;">
-            <h2 class="section-title">Package Deals</h2>
-            <p class="section-description">Save up to 20% by bundling services that work better together.</p>
+    <!-- Featured Packages Section -->
+    <section class="section section-light" id="packages">
+        <div class="section-header">
+            <h2 class="section-title">Featured Packages</h2>
+            <p class="section-description">Complete solutions for companies at different stages of growth.</p>
         </div>
 
-        <div class="packages-grid">
-            <div class="package-card">
-                <span class="package-badge">Save $1,000</span>
-                <div class="package-name">Sales Engagement Stack</div>
-                <div class="package-price">$6,500</div>
-                <div class="package-savings">Regular price: $7,500</div>
-                <ul class="package-includes">
-                    <li>Sales engagement platform setup</li>
-                    <li>Conversation intelligence integration</li>
-                    <li>Meeting scheduling automation</li>
-                    <li>Full integration between all tools</li>
-                    <li>Unified team training</li>
-                </ul>
-                <div class="timeline-value" style="margin-top: 20px;">4 weeks timeline</div>
-            </div>
-
-            <div class="package-card">
-                <span class="package-badge">Save $600</span>
-                <div class="package-name">Lead Gen & Enrichment</div>
-                <div class="package-price">$3,000</div>
-                <div class="package-savings">Regular price: $3,600</div>
-                <ul class="package-includes">
-                    <li>Data enrichment platform setup</li>
-                    <li>Meeting scheduling automation</li>
-                    <li>Marketing automation integration</li>
-                    <li>Automated enrichment workflows</li>
-                    <li>Team training</li>
-                </ul>
-                <div class="timeline-value" style="margin-top: 20px;">2.5 weeks timeline</div>
-            </div>
-
-            <div class="package-card">
-                <span class="package-badge">Save $2,500</span>
-                <div class="package-name">Full Revenue Stack</div>
-                <div class="package-price">$12,000</div>
-                <div class="package-savings">Regular price: $14,500</div>
-                <ul class="package-includes">
-                    <li>Complete tech stack implementation</li>
-                    <li>Sales engagement & conversation intelligence</li>
-                    <li>Data enrichment & marketing automation</li>
-                    <li>All integrations configured</li>
-                    <li>Comprehensive training program</li>
-                </ul>
-                <div class="timeline-value" style="margin-top: 20px;">6-8 weeks timeline</div>
-            </div>
-
+        <div class="featured-packages-grid">
             <div class="package-card">
                 <span class="package-badge">Save $3,000</span>
                 <div class="package-name">Start Up Package</div>
@@ -1476,7 +1030,7 @@
                     <li>Process & workflow design</li>
                     <li>Team training & documentation</li>
                 </ul>
-                <div class="timeline-value" style="margin-top: 20px;">8-10 weeks timeline</div>
+                <div class="timeline-value">Timeline: 8-10 weeks</div>
             </div>
 
             <div class="package-card">
@@ -1492,7 +1046,7 @@
                     <li>Advanced reporting & dashboards</li>
                     <li>Team enablement & best practices</li>
                 </ul>
-                <div class="timeline-value" style="margin-top: 20px;">6-8 weeks timeline</div>
+                <div class="timeline-value">Timeline: 6-8 weeks</div>
             </div>
         </div>
     </section>
@@ -1500,7 +1054,7 @@
     <!-- Process Section -->
     <section class="section section-dark" id="process">
         <div class="section-header">
-            <h2 class="section-title" style="color: white;">How We Work</h2>
+            <h2 class="section-title">How We Work</h2>
             <p class="section-description">A proven process that delivers results on time, every time.</p>
         </div>
         <div class="process-steps">
@@ -1512,114 +1066,41 @@
             <div class="process-step">
                 <div class="step-number">2</div>
                 <h3>Proposal</h3>
-                <p>Within 48 hours, receive a detailed proposal with scope, timeline, deliverables, and fixed pricing.</p>
+                <p>Within 48 hours, you receive a detailed proposal with scope, timeline, and fixed pricing.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">3</div>
                 <h3>Execution</h3>
-                <p>We deliver the project in 2-6 weeks with weekly check-ins and transparent progress tracking.</p>
+                <p>We deliver on schedule with weekly check-ins and transparent progress updates.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">4</div>
                 <h3>Handoff</h3>
-                <p>Comprehensive documentation, training, and optional ongoing support to ensure lasting impact.</p>
+                <p>Complete documentation, training, and 30-day email support ensure smooth adoption.</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Revenue Operations?</h2>
-            <p>Book a free 45-minute consultation to discuss your challenges and explore how we can help.</p>
-            <a href="#contact" class="cta-button">Schedule Free Consultation</a>
-        </div>
+    <!-- Blog Preview Section -->
+    <section class="blog-preview">
+        <h3>Latest Insights</h3>
+        <p>Revenue operations, data analytics, and growth strategies for Series A & B companies.</p>
+        <a href="blog.html" class="blog-button">View All Articles</a>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p>Whether you need a comprehensive audit or ongoing RevOps support, we're here to help you scale with confidence.</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-item-content">
-                            <h4>Email</h4>
-                            <p><a href="/cdn-cgi/l/email-protection#5b333e3737341b3a2332343676383435282e372f32353c75383436"><span class="__cf_email__" data-cfemail="670f020b0b0827061f0e080a4a04080914120b130e09004904080a">[email&#160;protected]</span></a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-item-content">
-                            <h4>Location</h4>
-                            <p>Madrid, Spain</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🌍</div>
-                        <div class="contact-item-content">
-                            <h4>We Serve</h4>
-                            <p>US, EMEA, LATAM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interest</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service...</option>
-                            <option value="audit">Data Analytics Audit</option>
-                            <option value="crm">CRM Optimization</option>
-                            <option value="dashboard">Custom Dashboards</option>
-                            <option value="revops">RevOps Foundation</option>
-                            <option value="market">Market Analysis</option>
-                            <option value="tools">Tool Implementation</option>
-                            <option value="sql">SQL Optimization</option>
-                            <option value="automation">Sales Automation</option>
-                            <option value="gtm">GTM Strategy</option>
-                            <option value="other">Other / Not Sure</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell Us About Your Challenge</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
+            <h2>Ready to Get Started?</h2>
+            <p>Book a free 45-minute consultation to discuss your challenges and explore how we can help.</p>
+            <a href="mailto:hello@rodaconsulting.com" class="contact-email">hello@rodaconsulting.com</a>
+            <a href="mailto:hello@rodaconsulting.com?subject=Discovery Call Request" class="contact-button">Schedule Discovery Call</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#expertise">Expertise</a>
-                <a href="#services">Services</a>
-                <a href="#process">Process</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 RODA Consulting. Revenue Operations & Data Analytics Excellence.</p>
-            </div>
-        </div>
+        <p>&copy; 2026 RODA Consulting. Revenue Operations & Data Analytics Excellence.</p>
     </footer>
 </body>
 </html>

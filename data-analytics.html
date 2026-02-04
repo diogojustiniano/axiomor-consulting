@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Data Analytics consulting services: analytics audits, custom dashboards, and SQL database optimization for Series A and B SaaS companies.">
+    <title>Data Analytics Services | RODA Consulting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding-top: 80px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0a0a0a;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        
+        /* Dropdown Navigation */
+        .nav-item {
+            position: relative;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            margin-top: 10px;
+            padding: 24px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-section {
+            padding: 0 24px;
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .dropdown-section:last-child {
+            border-right: none;
+        }
+        
+        .dropdown-header {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3b82f6;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-header:hover {
+            color: #3b82f6;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 8px 0;
+            color: #6a6a6a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            color: #3b82f6;
+            padding-left: 8px;
+        }
+        
+        /* Packages Dropdown - Single Column */
+        .packages-dropdown {
+            min-width: 280px;
+            grid-template-columns: 1fr;
+        }
+        
+        .packages-dropdown .dropdown-section {
+            border-right: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
+            color: white;
+            padding: 160px 40px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 100px 40px;
+            contain: layout style paint;
+        }
+        
+        .section-light {
+            background: #fafafa;
+        }
+        
+        .section-white {
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: #0a0a0a;
+        }
+        
+        .section-description {
+            font-size: 18px;
+            color: #6a6a6a;
+            line-height: 1.7;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+            border-color: #3b82f6;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+        
+        .service-card h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a0a0a;
+        }
+        
+        .service-description {
+            color: #6a6a6a;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            font-size: 15px;
+        }
+        
+        .deliverables {
+            margin-bottom: 24px;
+        }
+        
+        .deliverables h5 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #9a9a9a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .deliverables ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .deliverables li {
+            font-size: 14px;
+            color: #4a4a4a;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+        }
+        
+        .deliverables li:before {
+            content: "→";
+            margin-right: 8px;
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        
+        .deliverables li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+        }
+        
+        .price-section {
+            flex: 1;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 4px;
+        }
+        
+        .price-note {
+            font-size: 13px;
+            color: #9a9a9a;
+        }
+        
+        .timeline {
+            text-align: right;
+        }
+        
+        .timeline-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #9a9a9a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+        
+        .retainer-option {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        
+        .retainer-option h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .retainer-option p {
+            font-size: 13px;
+            color: #6a6a6a;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .retainer-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .retainer-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .retainer-commitment {
+            font-size: 12px;
+            color: #9a9a9a;
+        }
+        
+        /* Packages Grid */
+        .packages-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .package-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+            border-color: #3b82f6;
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .package-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0a0a0a;
+        }
+        
+        .package-price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 6px;
+        }
+        
+        .package-savings {
+            font-size: 14px;
+            color: #9a9a9a;
+            text-decoration: line-through;
+            margin-bottom: 24px;
+        }
+        
+        .package-includes {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .package-includes li {
+            font-size: 14px;
+            color: #4a4a4a;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-includes li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        
+        .package-includes li:last-child {
+            border-bottom: none;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: white;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dropdown {
+                min-width: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .nav-container {
+                padding: 16px 20px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 24px;
+                font-size: 14px;
+            }
+            
+            .dropdown {
+                min-width: 90vw;
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                padding-bottom: 16px;
+                margin-bottom: 16px;
+            }
+            
+            .dropdown-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .cta-content h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">RODA</a>
+            <ul class="nav-links">
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li class="nav-item">
+                    <a href="index.html#services">Services</a>
+                    <div class="dropdown">
+                        <div class="dropdown-section">
+                            <a href="revenue-operations.html" class="dropdown-header">Revenue Operations</a>
+                            <a href="revenue-operations.html#crm-optimization" class="dropdown-item">CRM Optimization</a>
+                            <a href="revenue-operations.html#revops-foundation" class="dropdown-item">RevOps Foundation Setup</a>
+                            <a href="revenue-operations.html#tool-implementation" class="dropdown-item">Sales & RevOps Tool Implementation</a>
+                            <a href="revenue-operations.html#sales-automation" class="dropdown-item">Sales Process Automation</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="data-analytics.html" class="dropdown-header">Data Analytics</a>
+                            <a href="data-analytics.html#analytics-audit" class="dropdown-item">Data Analytics Audit</a>
+                            <a href="data-analytics.html#dashboard-development" class="dropdown-item">Custom Dashboard Development</a>
+                            <a href="data-analytics.html#sql-optimization" class="dropdown-item">SQL Database Optimization</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <a href="marketing-operations.html" class="dropdown-header">Marketing Operations</a>
+                            <a href="marketing-operations.html#marketing-ops-setup" class="dropdown-item">Marketing Operations Setup</a>
+                            <a href="marketing-operations.html#gtm-strategy" class="dropdown-item">Go-to-Market Strategy</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#packages">Packages</a>
+                    <div class="dropdown packages-dropdown">
+                        <div class="dropdown-section">
+                            <a href="index.html#packages" class="dropdown-item">Start Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Scale Up Package</a>
+                            <a href="index.html#packages" class="dropdown-item">Sales Engagement Stack</a>
+                            <a href="index.html#packages" class="dropdown-item">Lead Gen & Enrichment</a>
+                            <a href="index.html#packages" class="dropdown-item">Full Revenue Stack</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Data Analytics Services</h1>
+            <p>Transform raw data into actionable insights. Analytics audits, custom dashboards, and database optimization to drive data-informed decisions.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section-white">
+        <div class="section-header">
+            <h2 class="section-title">Data Analytics Services</h2>
+            <p class="section-description">Expert analytics consulting for Series A and B companies looking to unlock the power of their data.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service 1: Data Analytics Audit -->
+            <div class="service-card" id="analytics-audit">
+                <span class="service-tag">Foundation</span>
+                <h4>Data Analytics Audit</h4>
+                <p class="service-description">Comprehensive assessment of your data infrastructure, quality, and reporting capabilities. Get a clear roadmap to improve analytics maturity.</p>
+                <div class="deliverables">
+                    <h5>Key Deliverables</h5>
+                    <ul>
+                        <li>Current state assessment</li>
+                        <li>Data quality analysis</li>
+                        <li>Gap identification</li>
+                        <li>6-month roadmap</li>
+                        <li>Dashboard mockups</li>
+                        <li>Executive presentation</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <div class="price-section">
+                        <div class="price">$3,500</div>
+                        <div class="price-note">One-time project</div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-label">Timeline</div>
+                        <div class="timeline-value">2 weeks</div>
+                    </div>
+                </div>
+                <div class="retainer-option">
+                    <h5>Optional Monthly Support</h5>
+                    <p>Ongoing analytics support: reporting, dashboard maintenance, ad-hoc analysis (20 hours/month)</p>
+                    <div class="retainer-pricing">
+                        <div class="retainer-price">$2,500/mo</div>
+                        <div class="retainer-commitment">3-month minimum</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Custom Dashboard Development -->
+            <div class="service-card" id="dashboard-development">
+                <span class="service-tag">Implementation</span>
+                <h4>Custom Dashboard Development</h4>
+                <p class="service-description">Beautiful, interactive Power BI or Tableau dashboards that turn data into decisions. Automated refresh, mobile-ready.</p>
+                <div class="deliverables">
+                    <h5>Key Deliverables</h5>
+                    <ul>
+                        <li>5 pages/views</li>
+                        <li>15-20 key metrics</li>
+                        <li>2-3 data sources</li>
+                        <li>Automated refresh</li>
+                        <li>Mobile optimization</li>
+                        <li>Training & documentation</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <div class="price-section">
+                        <div class="price">$3K-$6K</div>
+                        <div class="price-note">Varies by data sources</div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-label">Timeline</div>
+                        <div class="timeline-value">2-3 weeks</div>
+                    </div>
+                </div>
+                <div class="retainer-option">
+                    <h5>Optional Dashboard Maintenance</h5>
+                    <p>Keep dashboards current: updates, new metrics, optimization, monitoring (10 hours/month)</p>
+                    <div class="retainer-pricing">
+                        <div class="retainer-price">$1,500/mo</div>
+                        <div class="retainer-commitment">3-month minimum</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: SQL Database Optimization -->
+            <div class="service-card" id="sql-optimization">
+                <span class="service-tag">Performance</span>
+                <h4>SQL Database Optimization</h4>
+                <p class="service-description">Improve query speed. Optimize slow queries, design indexes, and enable real-time reporting.</p>
+                <div class="deliverables">
+                    <h5>Key Deliverables</h5>
+                    <ul>
+                        <li>Database health assessment</li>
+                        <li>10 optimized queries</li>
+                        <li>Index optimization</li>
+                        <li>Performance benchmarks</li>
+                        <li>Query library & best practices</li>
+                        <li>Knowledge transfer</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <div class="price-section">
+                        <div class="price">$3,500</div>
+                        <div class="price-note">One-time project</div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-label">Timeline</div>
+                        <div class="timeline-value">2 weeks</div>
+                    </div>
+                </div>
+                <div class="retainer-option">
+                    <h5>Optional Database Administration</h5>
+                    <p>Ongoing database support: query development, monitoring, maintenance (20 hours/month)</p>
+                    <div class="retainer-pricing">
+                        <div class="retainer-price">$2,500/mo</div>
+                        <div class="retainer-commitment">3-month minimum</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Packages Section -->
+    <section class="section section-light">
+        <div class="section-header">
+            <h2 class="section-title">Recommended Packages</h2>
+            <p class="section-description">Complete solutions that combine multiple services for maximum impact.</p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Package 1: Scale Up Package -->
+            <div class="package-card">
+                <span class="package-badge">Save $2,000</span>
+                <div class="package-name">Scale Up Package</div>
+                <div class="package-price">$10,000</div>
+                <div class="package-savings">Regular price: $12,000</div>
+                <ul class="package-includes">
+                    <li>Comprehensive systems audit</li>
+                    <li>Process optimization & improvement</li>
+                    <li>Data cleanup & quality enhancement</li>
+                    <li>Automation workflow refinement</li>
+                    <li>Advanced reporting & dashboards</li>
+                    <li>Team enablement & best practices</li>
+                </ul>
+                <div class="timeline-value" style="margin-top: 16px;">Timeline: 6-8 weeks</div>
+            </div>
+
+            <!-- Package 2: Start Up Package -->
+            <div class="package-card">
+                <span class="package-badge">Save $3,000</span>
+                <div class="package-name">Start Up Package</div>
+                <div class="package-price">$15,000</div>
+                <div class="package-savings">Regular price: $18,000</div>
+                <ul class="package-includes">
+                    <li>Complete system implementation from scratch</li>
+                    <li>CRM setup & configuration</li>
+                    <li>Marketing automation platform</li>
+                    <li>Initial dashboards & reporting</li>
+                    <li>Process & workflow design</li>
+                    <li>Team training & documentation</li>
+                </ul>
+                <div class="timeline-value" style="margin-top: 16px;">Timeline: 8-10 weeks</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Unlock Your Data?</h2>
+            <p>Book a free 45-minute consultation to discuss your data analytics challenges and explore how we can help.</p>
+            <a href="mailto:hello@rodaconsulting.com?subject=Data Analytics Inquiry" class="cta-button">Schedule Discovery Call</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 RODA Consulting. Revenue Operations & Data Analytics Excellence.</p>
+    </footer>
+</body>
+</html>
