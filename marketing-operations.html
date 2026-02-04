@@ -227,10 +227,10 @@
         
         /* Services Grid */
         .services-grid {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
         
@@ -560,6 +560,14 @@
         
         /* Responsive */
         @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .dropdown {
                 min-width: 600px;
             }
@@ -770,6 +778,42 @@
                     <p>Hands-on implementation support for your GTM strategy (35 hours/month)</p>
                     <div class="retainer-pricing">
                         <div class="retainer-price">$5,000/mo</div>
+                        <div class="retainer-commitment">6-month minimum</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Market & Competitive Analysis -->
+            <div class="service-card" id="market-analysis">
+                <span class="service-tag">Strategic</span>
+                <h4>Market & Competitive Analysis</h4>
+                <p class="service-description">TAM/SAM/SOM sizing, competitive intelligence, and ICP development for board presentations and strategic planning.</p>
+                <div class="deliverables">
+                    <h5>Key Deliverables</h5>
+                    <ul>
+                        <li>TAM/SAM/SOM analysis</li>
+                        <li>Competitive landscape</li>
+                        <li>Market trends report</li>
+                        <li>ICP & buyer personas</li>
+                        <li>Strategic recommendations</li>
+                        <li>Executive presentation</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <div class="price-section">
+                        <div class="price">$5,500</div>
+                        <div class="price-note">One-time project</div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-label">Timeline</div>
+                        <div class="timeline-value">3 weeks</div>
+                    </div>
+                </div>
+                <div class="retainer-option">
+                    <h5>Optional Market Intelligence</h5>
+                    <p>Ongoing market research and competitive monitoring (15 hours/month)</p>
+                    <div class="retainer-pricing">
+                        <div class="retainer-price">$2,000/mo</div>
                         <div class="retainer-commitment">6-month minimum</div>
                     </div>
                 </div>
