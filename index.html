@@ -148,12 +148,26 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
+            background: linear-gradient(-45deg, #0a1628, #1e3a5f, #0f2847, #2c5f8d);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
             color: white;
             padding: 200px 40px 140px;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         
         .hero::before {
@@ -952,7 +966,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Transform Data Into Revenue</h1>
+            <h1>Transform <span id="rotating-word">Data</span> Into Revenue</h1>
             <p>Expert revenue operations and data analytics consulting for Series A and Series B companies.</p>
             <p>Build the foundation to scale from $2M to $50M ARR with clean data, optimized processes, and revenue intelligence.</p>
             <div class="cta-buttons">
@@ -961,6 +975,33 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Rotating word animation
+        const words = ['Data', 'Operations', 'Marketing'];
+        let currentIndex = 0;
+        const rotatingWord = document.getElementById('rotating-word');
+        
+        function rotateWord() {
+            // Fade out
+            rotatingWord.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Change word
+                currentIndex = (currentIndex + 1) % words.length;
+                rotatingWord.textContent = words[currentIndex];
+                
+                // Fade in
+                rotatingWord.style.opacity = '1';
+            }, 300);
+        }
+        
+        // Add CSS transition for smooth fade
+        rotatingWord.style.transition = 'opacity 0.3s ease';
+        
+        // Rotate every 2 seconds
+        setInterval(rotateWord, 2000);
+    </script>
 
     <!-- Trust Bar -->
     <section class="trust-bar">
