@@ -36,7 +36,7 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 12px 40px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -148,26 +148,12 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(-45deg, #0a1628, #1e3a5f, #0f2847, #2c5f8d);
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
+            background: linear-gradient(135deg, #0a1628 0%, #0f1a2e 50%, #05101f 100%);
             color: white;
             padding: 200px 40px 140px;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-        
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
         
         .hero::before {
@@ -918,7 +904,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="logo_nobg.png" alt="RODA Consulting" style="height: 65px;"></a>
+            <a href="index.html" class="logo">RODA</a>
             <ul class="nav-links">
                 <li><a href="#expertise">Expertise</a></li>
                 <li class="nav-item">
@@ -936,11 +922,13 @@
                             <a href="data-analytics.html" class="dropdown-header">Data Analytics</a>
                             <a href="data-analytics.html#analytics-audit" class="dropdown-item">Data Analytics Audit</a>
                             <a href="data-analytics.html#dashboard-development" class="dropdown-item">Custom Dashboard Development</a>
-                            </div>
+                            <a href="data-analytics.html#sql-optimization" class="dropdown-item">SQL Database Optimization</a>
+                        </div>
                         <div class="dropdown-section">
                             <a href="marketing-operations.html" class="dropdown-header">Marketing Operations</a>
                             <a href="marketing-operations.html#marketing-ops-setup" class="dropdown-item">Marketing Operations Setup</a>
-                            <a href="marketing-operations.html#market-analysis" class="dropdown-item">Go-to-Market Strategy and Analysis</a>
+                            <a href="marketing-operations.html#gtm-strategy" class="dropdown-item">Go-to-Market Strategy & Innovation</a>
+                            <a href="marketing-operations.html#market-analysis" class="dropdown-item">Market & Competitive Analysis</a>
                         </div>
                     </div>
                 </li>
@@ -966,7 +954,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Transform <span id="rotating-word">Data</span> Into Revenue</h1>
+            <h1>Transform Data Into Revenue</h1>
             <p>Expert revenue operations and data analytics consulting for Series A and Series B companies.</p>
             <p>Build the foundation to scale from $2M to $50M ARR with clean data, optimized processes, and revenue intelligence.</p>
             <div class="cta-buttons">
@@ -975,33 +963,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-        // Rotating word animation
-        const words = ['Data', 'Operations', 'Marketing'];
-        let currentIndex = 0;
-        const rotatingWord = document.getElementById('rotating-word');
-        
-        function rotateWord() {
-            // Fade out
-            rotatingWord.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Change word
-                currentIndex = (currentIndex + 1) % words.length;
-                rotatingWord.textContent = words[currentIndex];
-                
-                // Fade in
-                rotatingWord.style.opacity = '1';
-            }, 300);
-        }
-        
-        // Add CSS transition for smooth fade
-        rotatingWord.style.transition = 'opacity 0.3s ease';
-        
-        // Rotate every 2 seconds
-        setInterval(rotateWord, 2000);
-    </script>
 
     <!-- Trust Bar -->
     <section class="trust-bar">
@@ -1035,6 +996,18 @@
         </div>
         <div class="expertise-grid">
             <div class="expertise-card">
+                <span class="expertise-icon">📊</span>
+                <h3>Data Analytics</h3>
+                <p>Transform raw data into actionable insights. We build dashboards, optimize databases, and create reporting frameworks that drive decisions.</p>
+                <ul class="expertise-list">
+                    <li>Power BI & Tableau</li>
+                    <li>SQL Database Optimization</li>
+                    <li>Python & Excel Analysis</li>
+                    <li>Custom Dashboard Development</li>
+                </ul>
+            </div>
+            
+            <div class="expertise-card">
                 <span class="expertise-icon">🎯</span>
                 <h3>Revenue Operations</h3>
                 <p>Build scalable revenue engines. From CRM optimization to forecasting frameworks, we align your go-to-market teams for growth.</p>
@@ -1067,18 +1040,6 @@
                     <li>Competitive Intelligence</li>
                     <li>ICP Development</li>
                     <li>Target Customer Strategy</li>
-                </ul>
-            </div>
-            
-            <div class="expertise-card">
-                <span class="expertise-icon">📊</span>
-                <h3>Data Analytics</h3>
-                <p>Transform raw data into actionable insights. We build dashboards, optimize databases, and create reporting frameworks that drive decisions.</p>
-                <ul class="expertise-list">
-                    <li>Power BI & Tableau</li>
-                    <li>Excel & Google Sheets Analysis</li>
-                    <li>Custom Dashboard Development</li>
-                    <li>Data Quality & Governance</li>
                 </ul>
             </div>
 
@@ -1148,7 +1109,7 @@
                     <li>Process & workflow design</li>
                     <li>Team training & documentation</li>
                 </ul>
-                <div class="timeline-value">Timeline: 8-12 weeks</div>
+                <div class="timeline-value">Timeline: 8-10 weeks</div>
             </div>
 
             <div class="package-card">
@@ -1265,7 +1226,6 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <img src="All_white_no_background.png" alt="RODA Consulting" style="height: 80px; margin-bottom: 20px;">
                 <h3>RODA Consulting</h3>
                 <p>Revenue Operations & Data Analytics consulting for Series A and B SaaS companies. Transform data into revenue with clean systems, optimized processes, and actionable intelligence.</p>
             </div>
